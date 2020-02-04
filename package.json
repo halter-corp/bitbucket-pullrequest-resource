@@ -30,7 +30,7 @@
     "@types/get-stdin": "^5.0.1",
     "@types/jest": "^23.3.9",
     "async-retry": "^1.2.3",
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "class-transformer": "^0.2.0",
     "command-line-args": "^5.0.2",
     "get-stdin": "^6.0.0",
