@@ -16,6 +16,22 @@ export class Execute {
 
         const child = execFile(path, args);
 
+        if (child == null) {
+          throw new Error(`could not get child process from path ${path}, and args ${args}`);
+        }
+
+        if (child.stdout == null) {
+          throw new Error(`chilld.stdout is null`);
+        }
+
+        if (child.stderr == null) {
+          throw new Error(`chilld.stderr is null`);
+        }
+
+        if (child.stdin == null) {
+          throw new Error(`chilld.stdin is null`);
+        }
+
         child.stdout.pipe(stdoutWriter);
         child.stderr.pipe(stderrWriter);
 
