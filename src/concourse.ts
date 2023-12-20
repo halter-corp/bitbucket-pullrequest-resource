@@ -4,6 +4,7 @@ export interface SourceConfig {
     project: string;
     repository: string;
     limit: number;
+    job_url: string;
     git: {
         uri: string;
         private_key: string;
