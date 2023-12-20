@@ -23,7 +23,17 @@ export class OutCommand {
         const pipeline = process.env.BUILD_PIPELINE_NAME;
         const job = process.env.BUILD_JOB_NAME;
         const build = process.env.BUILD_NAME;
-        const jobUrl = `${baseUrl}/teams/${team}/pipelines/${pipeline}/jobs/${job}/builds/${build}`;
+        const buildID = process.env.BUILD_ID;
+        let jobUrl = source.job_url || `${baseUrl}/teams/${team}/pipelines/${pipeline}/jobs/${job}/builds/${build}`;
+
+        if (source.job_url) {
+          jobUrl = jobUrl.replace(/\$ATC_EXTERNAL_URL/g, baseUrl || '')
+                         .replace(/\$BUILD_TEAM_NAME/g, team || '')
+                         .replace(/\$BUILD_PIPELINE_NAME/g, pipeline || '')
+                         .replace(/\$BUILD_JOB_NAME/g, job || '')
+                         .replace(/\$BUILD_NAME/g, build || '')
+                         .replace(/\$BUILD_ID/g, buildID || '');
+        }
 
         const state: PullRequestState = {
             state: params.state,

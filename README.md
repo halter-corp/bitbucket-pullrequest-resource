@@ -24,8 +24,9 @@ resource_types:
 
 * `repository`: *Required.* BitBucket repository.
 
-* `git`: *Required.* configuration is based on the [Git resource](https://github.com/concourse/git-resource). The branch configuration from the original resource is ignored. 
+* `git`: *Required.* Configuration is based on the [Git resource](https://github.com/concourse/git-resource). The branch configuration from the original resource is ignored.
 
+* `job_url`: *Optional.* Allow users to provide a custom Continuous Integration (CI) job URL. This parameter enables flexibility in reporting build status to an external system. (Concourse variables `$BUILD_TEAM_NAME, $BUILD_PIPELINE_NAME, $BUILD_JOB_NAME, $BUILD_NAME ,$BUILD_ID` are evaluated)
 
 ### Example
 
@@ -108,4 +109,3 @@ Update the build status of pull request with desired state.
 * `name`: *Required.* The name of the build result.
 
 * `description`: *Optional.* Description of the build result.
-
